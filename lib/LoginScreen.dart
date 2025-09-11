@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:demo/SignupScreen.dart';
 import 'package:demo/RouteSafetyPlannerPage.dart';
+import 'package:demo/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _isLoading = false;
         });
         // Navigate to home/dashboard screen
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RouteSafetyPlannerPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen()));
       });
     }
   }

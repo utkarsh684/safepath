@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:demo/LoginScreen.dart';
 import 'package:demo/RouteSafetyPlannerPage.dart';
+import 'package:demo/HomeScreen.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
       // Simulate backend call - replace with actual registration logic
       Future.delayed(Duration(seconds: 2), () {
         setState(() { _isLoading = false; });
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RouteSafetyPlannerPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen()));
       });
     }
   }
