@@ -1,10 +1,11 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 AppBar appbar() {
   return AppBar(
     automaticallyImplyLeading: false,
-    toolbarHeight: 110,
+    toolbarHeight: 100,
     backgroundColor: Colors.transparent,
     elevation: 0,
     flexibleSpace: ClipRRect(
@@ -32,22 +33,28 @@ AppBar appbar() {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // (Optional) Avatar or leading icon
+              SizedBox(width: 18),
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 25, right: 12),
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  top: 19,
+                  right: 0,
+                  bottom: 11,
+                ),
                 child: CircleAvatar(
-                  radius: 28,
+                  radius: 45,
                   backgroundColor: Colors.white.withOpacity(0.88),
-                  child: Icon(
-                    Icons.shield,
-                    size: 33,
-                    color: Color(0xFF1976D2),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    width: 84,
+                    height: 84,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 34, left: 0, right: 19),
+                  padding: const EdgeInsets.only(top: 24, left: 0, right: 26),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

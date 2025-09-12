@@ -6,7 +6,8 @@ class WeatherPage extends StatefulWidget {
   _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStateMixin {
+class _WeatherPageState extends State<WeatherPage>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   String _displayCity = "Your Location";
   bool _loading = false;
@@ -17,20 +18,58 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
 
   // Dummy current and searched weather data for demonstration
   List<Map<String, dynamic>> weeklyForecast = [
-    {"day": "Thu", "high": 34, "low": 25, "desc": "Sunny", "icon": Icons.wb_sunny},
-    {"day": "Fri", "high": 32, "low": 24, "desc": "Cloudy", "icon": Icons.cloud},
-    {"day": "Sat", "high": 31, "low": 23, "desc": "Rain", "icon": Icons.beach_access},
-    {"day": "Sun", "high": 29, "low": 22, "desc": "Thunderstorm", "icon": Icons.flash_on},
-    {"day": "Mon", "high": 30, "low": 23, "desc": "Clear", "icon": Icons.wb_sunny},
+    {
+      "day": "Thu",
+      "high": 34,
+      "low": 25,
+      "desc": "Sunny",
+      "icon": Icons.wb_sunny,
+    },
+    {
+      "day": "Fri",
+      "high": 32,
+      "low": 24,
+      "desc": "Cloudy",
+      "icon": Icons.cloud,
+    },
+    {
+      "day": "Sat",
+      "high": 31,
+      "low": 23,
+      "desc": "Rain",
+      "icon": Icons.beach_access,
+    },
+    {
+      "day": "Sun",
+      "high": 29,
+      "low": 22,
+      "desc": "Thunderstorm",
+      "icon": Icons.flash_on,
+    },
+    {
+      "day": "Mon",
+      "high": 30,
+      "low": 23,
+      "desc": "Clear",
+      "icon": Icons.wb_sunny,
+    },
     {"day": "Tue", "high": 32, "low": 24, "desc": "Windy", "icon": Icons.waves},
-    {"day": "Wed", "high": 33, "low": 25, "desc": "Drizzle", "icon": Icons.grain},
+    {
+      "day": "Wed",
+      "high": 33,
+      "low": 25,
+      "desc": "Drizzle",
+      "icon": Icons.grain,
+    },
   ];
 
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 700));
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 700),
+    );
     _fadeAnimation = CurvedAnimation(
       parent: _animationController!,
       curve: Curves.easeInOut,
@@ -69,9 +108,14 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Weather Safety",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 0.8),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            letterSpacing: 0.8,
+          ),
         ),
         backgroundColor: colorPrimary,
         centerTitle: true,
@@ -89,7 +133,10 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [colorPrimary.withOpacity(0.08), colorSecondary.withOpacity(0.09)],
+            colors: [
+              colorPrimary.withOpacity(0.08),
+              colorSecondary.withOpacity(0.09),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -107,7 +154,10 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
                       decoration: InputDecoration(
                         hintText: "Search location (e.g., Mumbai)",
                         prefixIcon: Icon(Icons.search, color: colorPrimary),
-                        contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 15),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 15,
+                        ),
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -124,11 +174,22 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorPrimary,
                         elevation: 2,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 12,
+                        ),
                       ),
                       icon: Icon(Icons.my_location, size: 18),
-                      label: Text("Current", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                      label: Text(
+                        "Current",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       onPressed: () {
                         setState(() {
                           _showCurrentLocation = true;
@@ -142,7 +203,10 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 5),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 28.0,
+                vertical: 5,
+              ),
               child: Row(
                 children: [
                   Icon(Icons.location_on, color: colorPrimary, size: 26),
@@ -165,60 +229,101 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 29),
-              child: Divider(thickness: 1.2, color: colorPrimary.withOpacity(0.2)),
+              child: Divider(
+                thickness: 1.2,
+                color: colorPrimary.withOpacity(0.2),
+              ),
             ),
             SizedBox(height: 8),
             _loading
                 ? Padding(
-              padding: const EdgeInsets.only(top: 54.0),
-              child: Center(child: CircularProgressIndicator(color: colorPrimary)),
-            )
+                    padding: const EdgeInsets.only(top: 54.0),
+                    child: Center(
+                      child: CircularProgressIndicator(color: colorPrimary),
+                    ),
+                  )
                 : Expanded(
-              child: FadeTransition(
-                opacity: _fadeAnimation!,
-                child: GridView.builder(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 1.3),
-                  itemCount: weeklyForecast.length,
-                  itemBuilder: (context, idx) {
-                    final day = weeklyForecast[idx];
-                    return AnimatedContainer(
-                      duration: Duration(milliseconds: 350 + idx * 100),
-                      curve: Curves.easeOut,
-                      margin: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.blueAccent.withOpacity(0.12),
-                            blurRadius: 9,
-                            offset: Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 6),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(day["icon"], color: colorPrimary, size: 34),
-                            SizedBox(height: 7),
-                            Text(day["day"], style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16, color: colorPrimary)),
-                            Text(day["desc"], style: TextStyle(fontSize: 14, color: Colors.black87)),
-                            SizedBox(height: 2),
-                            Text("High: ${day["high"]}°C", style: TextStyle(fontSize: 14, color: colorPrimary)),
-                            Text("Low: ${day["low"]}°C", style: TextStyle(fontSize: 14, color: Colors.blueGrey)),
-                          ],
+                    child: FadeTransition(
+                      opacity: _fadeAnimation!,
+                      child: GridView.builder(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 6,
                         ),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.3,
+                        ),
+                        itemCount: weeklyForecast.length,
+                        itemBuilder: (context, idx) {
+                          final day = weeklyForecast[idx];
+                          return AnimatedContainer(
+                            duration: Duration(milliseconds: 350 + idx * 100),
+                            curve: Curves.easeOut,
+                            margin: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blueAccent.withOpacity(0.12),
+                                  blurRadius: 9,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 17,
+                                horizontal: 6,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    day["icon"],
+                                    color: colorPrimary,
+                                    size: 34,
+                                  ),
+                                  SizedBox(height: 7),
+                                  Text(
+                                    day["day"],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: colorPrimary,
+                                    ),
+                                  ),
+                                  Text(
+                                    day["desc"],
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  SizedBox(height: 2),
+                                  Text(
+                                    "High: ${day["high"]}°C",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: colorPrimary,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Low: ${day["low"]}°C",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.blueGrey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ),
-            ),
+                    ),
+                  ),
             SizedBox(height: 8),
           ],
         ),
@@ -226,4 +331,3 @@ class _WeatherPageState extends State<WeatherPage> with SingleTickerProviderStat
     );
   }
 }
-

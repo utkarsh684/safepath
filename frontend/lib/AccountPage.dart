@@ -14,6 +14,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: AppBar(
         title: Text("Account"),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
     );
   }
