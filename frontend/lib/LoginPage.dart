@@ -1,26 +1,26 @@
 import 'dart:ui';
 
 import 'package:demo/HomeScreen.dart';
-import 'package:demo/LoginPage.dart';
+import 'package:demo/SignupScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'AuthService.dart';
 
-class Signupscreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _SignupscreenState createState() => _SignupscreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _SignupscreenState extends State<Signupscreen> {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
 
-  void handleSignup() async {
-    print("signup button pressed");
+  void handleLogin() async {
+    print("login button pressed");
     setState(() => _isLoading = true);
 
-    final token = await AuthService.signup(
+    final token = await AuthService.login(
       _emailController.text,
       _passwordController.text,
     );
@@ -130,12 +130,12 @@ class _SignupscreenState extends State<Signupscreen> {
                           ),
                         ),
                         onPressed: () {
-                          handleSignup();
+                          handleLogin();
                         },
                         child: _isLoading
                             ? const CircularProgressIndicator()
                             : Text(
-                                "SIGNUP",
+                                "LOGIN",
                                 style: TextStyle(
                                   color: Colors.blue[800],
                                   fontWeight: FontWeight.bold,
@@ -151,7 +151,7 @@ class _SignupscreenState extends State<Signupscreen> {
                         child: Row(
                           children: [
                             Text(
-                              "Already have an account? ",
+                              "Don't have an account? ",
                               style: TextStyle(color: Colors.white70),
                             ),
                             TextButton(
@@ -159,12 +159,12 @@ class _SignupscreenState extends State<Signupscreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
+                                    builder: (context) => Signupscreen(),
                                   ),
                                 );
                               },
                               child: Text(
-                                "Login",
+                                "Register",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
