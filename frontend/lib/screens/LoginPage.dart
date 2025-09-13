@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:demo/HomeScreen.dart';
-import 'package:demo/SignupScreen.dart';
+import 'package:demo/screens/HomeScreen.dart';
+import 'package:demo/screens/SignupScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'AuthService.dart';
+import '../services/AuthService.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       SizedBox(height: 12),
 
-                      // Login Button
+                      // Log
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(

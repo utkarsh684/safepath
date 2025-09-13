@@ -1,8 +1,9 @@
-import 'package:demo/AccountPage.dart';
-import 'package:demo/AlertsPage.dart';
-import 'package:demo/RoutesFinderPage.dart';
-import 'package:demo/WeatherPage.dart';
+import 'package:demo/screens/AlertsPage.dart';
+import 'package:demo/screens/RoutesFinderPage.dart';
+import 'package:demo/screens/WeatherPage.dart';
 import 'package:flutter/material.dart';
+
+import 'AccountPage.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});

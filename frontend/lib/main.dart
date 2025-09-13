@@ -1,4 +1,4 @@
-import 'package:demo/LoginPage.dart';
+import 'package:demo/screens/LoginPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

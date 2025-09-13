@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:demo/HomeScreen.dart';
-import 'package:demo/LoginPage.dart';
+import 'package:demo/screens/HomeScreen.dart';
+import 'package:demo/screens/LoginPage.dart';
 import 'package:flutter/material.dart';
 
-import 'AuthService.dart';
+import '../services/AuthService.dart';
 
 class Signupscreen extends StatefulWidget {
   @override
@@ -104,18 +104,18 @@ class _SignupscreenState extends State<Signupscreen> {
                       ),
                       SizedBox(height: 12),
 
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(650, 0, 10, 0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Forget Password?",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(650, 0, 10, 0),
+                      //   child: TextButton(
+                      //     onPressed: () {},
+                      //     child: Text(
+                      //       "Forget Password?",
+                      //       style: TextStyle(color: Colors.white, fontSize: 16),
+                      //     ),
+                      //   ),
+                      // ),
 
-                      SizedBox(height: 12),
+                      //SizedBox(height: 12),
 
                       // Login Button
                       ElevatedButton(
